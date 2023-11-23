@@ -1,0 +1,170 @@
+package com.cricketinfo_Application.model;
+
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="crick_matches")
+public class Match {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int matchId;
+	private String teamHeading;
+	private String matchNumberVenue;
+	private String battingTeam;
+	private String battingTeamScore;
+	private String ballteam;
+	private String ballTeamScore;
+	private String liveText;
+	private String matchLink;
+	private String textComplete;
+	@Enumerated
+	private MatchStatus status;
+	 
+	private Date date = new Date();
+
+	public Match() {
+		super();
+	}
+
+	public Match(int matchId, String teamHeading, String matchNumberVenue, String battingTeam, String battingTeamScore,
+			String ballteam, String ballTeamScore, String liveText, String matchLink, String textComplete,
+			MatchStatus status, Date date) {
+		super();
+		this.matchId = matchId;
+		this.teamHeading = teamHeading;
+		this.matchNumberVenue = matchNumberVenue;
+		this.battingTeam = battingTeam;
+		this.battingTeamScore = battingTeamScore;
+		this.ballteam = ballteam;
+		this.ballTeamScore = ballTeamScore;
+		this.liveText = liveText;
+		this.matchLink = matchLink;
+		this.textComplete = textComplete;
+		this.status = status;
+		this.date = date;
+	}
+
+	public int getMatchId() {
+		return matchId;
+	}
+	//set match status according to textComplete
+	
+	public void setMatchStatus() {
+		if(textComplete.isBlank()) {
+			this.status=MatchStatus.LIVE;
+		}
+		else {
+			this.status=MatchStatus.COMPLETED;
+		}
+	}
+
+	public void setMatchId(int matchId) {
+		this.matchId = matchId;
+	}
+
+	public String getTeamHeading() {
+		return teamHeading;
+	}
+
+	public void setTeamHeading(String teamHeading) {
+		this.teamHeading = teamHeading;
+	}
+
+	public String getMatchNumberVenue() {
+		return matchNumberVenue;
+	}
+
+	public void setMatchNumberVenue(String matchNumberVenue) {
+		this.matchNumberVenue = matchNumberVenue;
+	}
+
+	public String getBattingTeam() {
+		return battingTeam;
+	}
+
+	public void setBattingTeam(String battingTeam) {
+		this.battingTeam = battingTeam;
+	}
+
+	public String getBattingTeamScore() {
+		return battingTeamScore;
+	}
+
+	public void setBattingTeamScore(String battingTeamScore) {
+		this.battingTeamScore = battingTeamScore;
+	}
+
+	public String getBallteam() {
+		return ballteam;
+	}
+
+	public void setBallteam(String ballteam) {
+		this.ballteam = ballteam;
+	}
+
+	public String getBallTeamScore() {
+		return ballTeamScore;
+	}
+
+	public void setBallTeamScore(String ballTeamScore) {
+		this.ballTeamScore = ballTeamScore;
+	}
+
+	public String getLiveText() {
+		return liveText;
+	}
+
+	public void setLiveText(String liveText) {
+		this.liveText = liveText;
+	}
+
+	public String getMatchLink() {
+		return matchLink;
+	}
+
+	public void setMatchLink(String matchLink) {
+		this.matchLink = matchLink;
+	}
+
+	public String getTextComplete() {
+		return textComplete;
+	}
+
+	public void setTextComplete(String textComplete) {
+		this.textComplete = textComplete;
+	}
+
+	public MatchStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(MatchStatus status) {
+		this.status = status;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "Match [matchId=" + matchId + ", teamHeading=" + teamHeading + ", matchNumberVenue=" + matchNumberVenue
+				+ ", battingTeam=" + battingTeam + ", battingTeamScore=" + battingTeamScore + ", ballteam=" + ballteam
+				+ ", ballTeamScore=" + ballTeamScore + ", liveText=" + liveText + ", matchLink=" + matchLink
+				+ ", textComplete=" + textComplete + ", status=" + status + ", date=" + date + "]";
+	}
+	
+	
+
+}
